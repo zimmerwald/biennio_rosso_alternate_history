@@ -23,7 +23,7 @@ The PSRI are heavily pushing for us to support Bonomi, Bissolati's successor, as
 @turati_pm
 view-if: not reformists_defect
 on-arrival: prime_minister = "Turati"; prime_minister_party = psi_name; psri_relation -= 5; ldr_relation -= 5 if centre_left_coalition; ppi_relation -= 5 if socialist_catholic_coalition
-subtitle: The PSRI argues for their own successor[? if centre_left_coalition or socialist_catholic_coalition :, while the [? if centre_left_coalition : liberals ?][? if socialist_catholic_coalition : Catholics ?] argue for their own man to lead. ?]
+subtitle: The PSRI argues for their own successor[? if centre_left_coalition or socialist_catholic_coalition :, while the [? if centre_left_coalition : liberals ?][? if socialist_catholic_coalition : Catholics ?] argue for their own man to lead ?].
 
 Our coalition partners are reluctant to accept the new Prime Minister, but they do not make loud objections.
 
