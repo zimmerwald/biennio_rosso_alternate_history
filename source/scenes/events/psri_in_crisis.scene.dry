@@ -49,14 +49,15 @@ if (options.length > 0) {
 
 The opposition is able to succeed, continuing the party's ideological commitment to social democracy and left-wing ideals.
 
-[? if psri_joint_pll : The PSRI have come to an agreement with the PLL, officially forming a joint-list with them as a junior partner and stemming the bleed of the party's support. ?]
+[? if psri_joint_pll : The PSRI has come to an agreement with the PLL, officially forming a joint-list with them as a junior partner and stemming the bleed of the party's support. ?]
 
-[? if psri_joint_psu : The PSRI have come to a wary agreement with the PSU, officially forming a joint-list with them as a junior partner. This has occurred primarily because of our popularity, as well as our increasing radicalisation, which has prompted a consolidation of the reformist left. ?]
+[? if psri_joint_psu : The PSRI has come to a wary agreement with the PSU, officially forming a joint-list with them as a junior partner. This has occurred primarily because of our popularity, as well as our increasing radicalisation, which has prompted a consolidation of the reformist left. ?]
 
-[? if psri_joint_pri : The PSRI have come to an agreement with the PRI, officially forming a joint-list with the them as a junior partner. and stemming the bleed of the party's support. ?]
+[? if psri_joint_pri : The PSRI has come to an agreement with the PRI, officially forming a joint-list with the them as a junior partner. This has occurred primarily because of the sudden resurgence of support for republicanism; Bissolati the former radical was able to convince other party members to support the joint-list with historic allies of socialists and radicals. ?]
 
 @psri_moderate
-view-if: (not psu_formed or (psi_votes < 37 and radicalisation < 8 or (not not_participating or not maximalist_participating) or radicalisation < 7)) and ((not pri_prominent and not pll_formed) or bissolati_dead = 1)
+choose-if: (not psu_formed or (psi_votes < 37 and radicalisation < 8 or (not not_participating or not maximalist_participating) or radicalisation < 7)) and ((not pri_prominent and not pll_formed) or bissolati_dead = 1)
+unavailable-subtitle: The party [? if bissolati_dead != 1 :, especially Bissolati, ?] sees a willing and viable left-wing partner to form a joint-list with.
 on-arrival: {!
 Q.psri_solo = 1;
 Q.psri_time = Q.time + 7;
