@@ -263,7 +263,7 @@ Q.nationalist_sentiment_disp = Math.round(Q.nationalist_sentiment);
 
 = Projected election results
 
-(If[? if violent_revolution : truly free and fair ?]elections were to be held now):
+(If [? if violent_revolution : truly free and fair ?]elections were to be held now):
 
 [+ psi_name +]: [+ psi_votes +]%
 
