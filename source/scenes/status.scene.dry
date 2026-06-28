@@ -174,7 +174,7 @@ if (Q.fdc_strength) {
 if (Q.ard_strength) {
     Q.ard_strength_2 = Math.round(Q.ard_strength);
 }
-if (Q.adp_strength and not Q.violent_revolution) {
+if (Q.adp_strength && Q.violent_revolution != 1) {
     Q.adp_strength_2 = Math.round(Q.adp_strength);
 }
 if (Q.abl_strength) {
