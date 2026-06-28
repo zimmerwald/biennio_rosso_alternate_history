@@ -16,7 +16,7 @@ There is significant efforts within the party, including Bonomi, who are pushing
 - @psri_moderate: The PSRI begins a shift towards social liberalism.
 
 @psri_left
-choose-if: (psu_formed and (psi_votes >= 37 or radicalisation >= 8)) or ((pri_prominent or pll_formed) and bissolati_dead != 1)
+choose-if: (psu_formed and (psi_votes >= 37 or radicalisation >= 8)) or (pri_prominent and bissolati_dead != 1) or pll_formed
 unavailable-subtitle: Without a suitable left-wing partner, advocates argue a change in course is necessary.
 on-arrival: {!
 
