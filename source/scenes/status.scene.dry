@@ -46,27 +46,28 @@ Revolutionary Fervour: [+ revolutionary_fervour +]%
 
 Prime Minister: [+ prime_minister +] ([+ prime_minister_party +])
 
-Senate: [? if veto_removed == 0: Empowered ?][? if veto_removed == 1: Weakened ?]
+[? if not violent_revolution : Senate: [? if veto_removed == 0: Empowered ?][? if veto_removed == 1: Weakened ?] ?]
 
-Chamber of Deputies composition:
+[? if not violent_revolution : Chamber of Deputies composition: ?]
+[? if violent_revolution : Supreme Soviet composition: ?]
 
 [? if changed_name != 1: {!<span class="tooltip-text" title="Italian Socialist Party">PSI</span>!}: [+ psi_seating_disp +]% ?]
 [? if changed_name = 1 : {!<span class="tooltip-text" title="Communist Party - Italian Section of the Communist International">PC - SIIC</span>!}: [+ psi_seating_disp +]% ?]
 [? if pcdi_formed : {!<span class="tooltip-text" title="Communist Party of Italy">PCd'I</span>!}: [+ pcdi_seating_disp +]% ?]
 [? if psu_formed : {!<span class="tooltip-text" title="Unitary Socialist Party">PSU</span>!}: [+ psu_seating_disp +]% ?]
 [? if not psri_collapse :{!<span class="tooltip-text" title="Italian Reformist Socialist Party">PSRI</span>!}: [+ psri_seating_disp +]% ?]
-[? if pll_formed : {!<span class="tooltip-text" title="Liberal Workers' Party">PLL</span>!}: [+ pll_seating_disp +]% ?]
-[? if pri_prominent : {!<span class="tooltip-text" title="Italian Republican Party">PRI</span>!}: [+ pri_seating_disp +]% ?]
-[? if not pdsi_formed : {!<span class="tooltip-text" title="Social Democracy">DS</span>!}: [+ ds_seating_disp +]% ?]
-[? if pdsi_formed : {!<span class="tooltip-text" title="Italian Social Democratic Party">PDSI</span>!}: [+ ds_seating_disp +]% ?]
+[? if pll_formed and not violent_revolution : {!<span class="tooltip-text" title="Liberal Workers' Party">PLL</span>!}: [+ pll_seating_disp +]% ?]
+[? if pri_prominent or (violent_revolution and benevolence) : {!<span class="tooltip-text" title="Italian Republican Party">PRI</span>!}: [+ pri_seating_disp +]% ?]
+[? if not pdsi_formed and not violent_revolution : {!<span class="tooltip-text" title="Social Democracy">DS</span>!}: [+ ds_seating_disp +]% ?]
+[? if pdsi_formed and not violent_revolution : {!<span class="tooltip-text" title="Italian Social Democratic Party">PDSI</span>!}: [+ ds_seating_disp +]% ?]
 {!<span class="tooltip-text" title="Italian People's Party">PPI</span>!}: [+ ppi_seating_disp +]%
-[? if not pldi_formed : {!<span class="tooltip-text" title="Liberals, Democrats & Radicals">LDR</span>!}: [+ ldr_seating_disp +]% ?]
-[? if pldi_formed : {!<span class="tooltip-text" title="Italian Democratic Liberal Party">PLDI</span>!}: [+ ldr_seating_disp +]% ?]
-[? if not pli_formed : {!<span class="tooltip-text" title="Liberal Union">UL</span>!}: [+ ul_seating_disp +]% ?]
-[? if pli_formed : {!<span class="tooltip-text" title="Italian Liberal Party">PLI</span>!}: [+ ul_seating_disp +]% ?]
-[? if pcs_formed : {!<span class="tooltip-text" title="Christian Social Party">PCS</span>!}: [+ pcs_seating_disp +]% ?]
-[? if not pnf_formed :{!<span class="tooltip-text" title="Italian Fasces of Combat">FdC</span>!}: [+ pnf_seating_disp +]% ?]
-[? if pnf_formed :{!<span class="tooltip-text" title="National Fascist Party">PNF</span>!}: [+ pnf_seating_disp +]% ?]
+[? if not pldi_formed and not violent_revolution : {!<span class="tooltip-text" title="Liberals, Democrats & Radicals">LDR</span>!}: [+ ldr_seating_disp +]% ?]
+[? if pldi_formed and not violent_revolution : {!<span class="tooltip-text" title="Italian Democratic Liberal Party">PLDI</span>!}: [+ ldr_seating_disp +]% ?]
+[? if not pli_formed and not violent_revolution : {!<span class="tooltip-text" title="Liberal Union">UL</span>!}: [+ ul_seating_disp +]% ?]
+[? if pli_formed and not violent_revolution : {!<span class="tooltip-text" title="Italian Liberal Party">PLI</span>!}: [+ ul_seating_disp +]% ?]
+[? if pcs_formed and not violent_revolution : {!<span class="tooltip-text" title="Christian Social Party">PCS</span>!}: [+ pcs_seating_disp +]% ?]
+[? if not pnf_formed and not violent_revolution :{!<span class="tooltip-text" title="Italian Fasces of Combat">FdC</span>!}: [+ pnf_seating_disp +]% ?]
+[? if pnf_formed and not violent_revolution :{!<span class="tooltip-text" title="National Fascist Party">PNF</span>!}: [+ pnf_seating_disp +]% ?]
 Others: [+ other_seating_disp +]%
 
 [? if psi_in_government = 1 : Budget: [+ budget +] ?]
@@ -173,7 +174,7 @@ if (Q.fdc_strength) {
 if (Q.ard_strength) {
     Q.ard_strength_2 = Math.round(Q.ard_strength);
 }
-if (Q.adp_strength) {
+if (Q.adp_strength and not Q.violent_revolution) {
     Q.adp_strength_2 = Math.round(Q.adp_strength);
 }
 if (Q.abl_strength) {
@@ -199,7 +200,7 @@ Streetfighting: [+ violent_prevalence : violence +]
 
 [? if not national_congress_seen : Red Guards: [? if not rg_banned : Operating ?][? if rg_banned : Banned ?] ?]
 
-[? if arditi_formed : Arditi del Popolo: Operating ?]
+[? if arditi_formed and not violent_revolution : Arditi del Popolo: Operating ?]
 
 = Paramilitary Forces
 
@@ -215,9 +216,9 @@ Streetfighting: [+ violent_prevalence : violence +]
 
 [? if not national_congress_seen and pcdi_formed : Red Guard - PSI Militarization: [+ rg_militancy : militancy +] ?]
 
-[? if arditi_formed : {!<span class="tooltip-text" title="The Arditi del Popolo is a anti-fascist group composed of anarchists to communists to republicans.">Arditi del Popolo</span>!} Strength: [+ adp_strength_2 +] thousand ?]
+[? if arditi_formed and not violent_revolution : {!<span class="tooltip-text" title="The Arditi del Popolo is a anti-fascist group composed of anarchists to communists to republicans.">Arditi del Popolo</span>!} Strength: [+ adp_strength_2 +] thousand ?]
 
-[? if arditi_formed: Arditi del Popolo Militarization: [+ adp_militancy : militancy +] ?]
+[? if arditi_formed and not violent_revolution : Arditi del Popolo Militarization: [+ adp_militancy : militancy +] ?]
 
 [? if not national_congress_seen : {!<span class="tooltip-text" title="The Fasci is a right-wing organisation of war veterans associated with the PNF.">Fasci</span>!} Strength: [+ fdc_strength_2 +] thousand ?]
 
