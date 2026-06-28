@@ -27,14 +27,14 @@ if (Q.soviet_relation >= 6 && Q.reformist_strength > Q.communist_strength) {
 }
 
 if (Q.radicalisation < 3) {
-    Q.duumvirate_influence += 1;
+    Q.duumvirate_influence += 2;
 }
 
 if (Q.reformists_expelled) {
     Q.bukharin_influence += 2;
 }
 
-if (Q.reformists_split && Q.communist_split == 0) {
+if (Q.reformists_defect == 1 && Q.communist_split != 1) {
     Q.bukharin_influence += 1;
 }
 
@@ -102,7 +102,7 @@ Most within the party are relieved; Bukharin's foreign policy outlook is seeming
 @duumvirate_elected
 on-arrival: soviet_leader = "Duumvirate"
 set-bg: img/background.png
-choose-if: duumvirate_influence > stalin_influence and duumvirate_influence > trotsky_influence and duumvirate_influence > bukharin_influence
+choose-if: duumvirate_influence > stalin_influence and ((duumvirate_influence >= trotsky_influence and duumvirate_influence >= bukharin_influence) or (trotsky_influence == bukharin_influence))
 unavailable-subtitle: A significantly more moderate yet friendly [+ psi_name +] could deadlock the Congress.
 
 Lev Kamenev and Grigory Zinoviev are able to seize control of the party, sidelining Stalin and merging with Trotsky's Left Opposition and successfully deadlocking the Congress as no figure is able to come up on top, placing them both as joint leadership in a bid to preserve unity. Both leaders assume positions of equal footing, and are posed to control the party for the foreseeable future.
