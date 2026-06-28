@@ -31,7 +31,7 @@ Our coalition partners are reluctant to accept the new Prime Minister, but they 
 on-arrival: prime_minister = "Bonomi"; prime_minister_party = "PSRI"; psri_relation += 5; ldr_relation -= 3 if centre_left_coalition; ppi_relation -= 3 if socialist_catholic_coalition
 subtitle: The PSRI claims allowing Bonomi to lead is the right thing to do.
 
-Our coalition partners on the right are reluctant to accept the new Prime Minister, but they do not make loud objections. The PSRI thanks us for our backing, and we see an improvement in relations.
+[? if centre_left_coalition or socialist_catholic_coalition :Our coalition partners on the right are reluctant to accept the new Prime Minister, but they do not make loud objections.  ?]The PSRI thanks us for our backing, and we see an improvement in relations.
 
 @de_gasperi_pm
 on-arrival: prime_minister = "De Gasperi"; prime_minister_party = "PPI"; psri_relation -= 3; ppi_relation += 5
